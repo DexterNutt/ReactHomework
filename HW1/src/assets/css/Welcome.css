@@ -1,0 +1,11 @@
+.welcomeTag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcomeTag #intro {
+  border-radius: 5px;
+  padding: 10px;
+  border: dotted black 2px;
+}

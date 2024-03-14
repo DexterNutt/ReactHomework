@@ -1,0 +1,17 @@
+.Bard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: violet;
+  border: solid 2px dotted red;
+  color: navy;
+  padding: 10px;
+}
+
+.Bard #title {
+  text-decoration: underline dotted crimson;
+}
+
+.Bard .subclasses ul {
+  list-style-type: Hiragana;
+}

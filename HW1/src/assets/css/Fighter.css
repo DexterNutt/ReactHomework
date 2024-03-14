@@ -1,0 +1,17 @@
+.Fighter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkgreen;
+  border: solid 2px dotted goldenrod;
+  color: gold;
+  padding: 10px;
+}
+
+.Fighter #title {
+  text-decoration: red wavy underline;
+}
+
+.Fighter .subclasses ul {
+  list-style-type: cjk-ideographic;
+}

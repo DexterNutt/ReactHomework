@@ -1,0 +1,17 @@
+.Wizard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aqua;
+  border: solid 2px dotted brown;
+  color: crimson;
+  padding: 10px;
+}
+
+.Wizard #title {
+  text-decoration: blue underline overline;
+}
+
+.Wizard .subclasses ul {
+  list-style-type: katakana;
+}
