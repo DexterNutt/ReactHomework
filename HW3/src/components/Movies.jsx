@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const Movies = ({ movies }) => {
   return (
@@ -37,6 +38,9 @@ export const Movies = ({ movies }) => {
   );
 };
 
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 //? Да се прикаже во дополнителен фајл листа од филмови (минимум 5)
 //? Да се издефинира во App.jsx со атрибути {name, date, genre, plot, imdbLink, imgUrl}
 //? Листата на атрибути и приказ и слика за филмот (Сликата не мора да биде од imdb)

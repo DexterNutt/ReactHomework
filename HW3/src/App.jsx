@@ -5,16 +5,6 @@ export function App() {
   const movieArr = [
     {
       _id: 0,
-      title: "Inception",
-      date: "2010",
-      genre: "Science Fiction",
-      plot: "A thief who enters the dreams of others to steal their secrets from their subconscious.",
-      imdbLink: "https://www.imdb.com/title/tt1375666/",
-      imgUrl:
-        "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
-    },
-    {
-      _id: 1,
       title: "Star Wars: A New Hope",
       date: "1977",
       genre: "Science Fiction, Fantasy",
@@ -22,6 +12,16 @@ export function App() {
       imdbLink: "https://www.imdb.com/title/tt0076759/",
       imgUrl:
         "https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg",
+    },
+    {
+      _id: 1,
+      title: "Inception",
+      date: "2010",
+      genre: "Science Fiction",
+      plot: "A thief who enters the dreams of others to steal their secrets from their subconscious.",
+      imdbLink: "https://www.imdb.com/title/tt1375666/",
+      imgUrl:
+        "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
     },
     {
       _id: 2,
@@ -52,6 +52,7 @@ export function App() {
       imdbLink: "https://www.imdb.com/title/tt1160419/",
       imgUrl:
         "https://upload.wikimedia.org/wikipedia/en/8/8e/Dune_%282021_film%29.jpg",
+      rating: "",
     },
   ];
   return <Movies movies={movieArr} />;
