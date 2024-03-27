@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "./Input";
 import { Dropdown } from "./Dropdown";
+import "./Login.css";
 
 const elements = [
   { value: "Select", name: "Select desired platform" },
@@ -81,8 +82,7 @@ export const Login = () => {
         />
       </form>
       <button onClick={showValues}>Show values</button>
-      <br />
-      <br />
+
       {textArea ? (
         <textarea
           rows="4"
@@ -108,8 +108,7 @@ export const Login = () => {
           }}
         />
       )}
-      <br />
-      <button onClick={showComment}>Print Comment</button>
+      <button onClick={showComment}>Post Comment</button>
     </div>
   );
 };
