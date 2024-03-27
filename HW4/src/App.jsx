@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Users } from "../components/Users";
+import React from "react";
+import { Form } from "./components/Form";
 
 export function App() {
   return (
     <div id="App">
-      <Users />
+      <Form />
     </div>
   );
 }
