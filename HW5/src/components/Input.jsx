@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export const Input = ({
@@ -23,6 +23,11 @@ export const Input = ({
           <i
             className={type === "password" ? "fa fa-eye" : "fa fa-eye-slash"}
           ></i>
+        </button>
+      )}
+      {name === "comment" && (
+        <button type="button" onClick={setToggle}>
+          <i className={type === "text" ? "fa fa-comment" : "fa fa-check"}></i>
         </button>
       )}
     </p>
