@@ -89,7 +89,7 @@ export const Login = () => {
           cols="50"
           name="comment"
           setToggle={() => {
-            handleInputChange();
+            changeToTextArea();
           }}
         >
           {comment}
