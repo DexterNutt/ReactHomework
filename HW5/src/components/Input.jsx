@@ -8,16 +8,29 @@ export const Input = ({
   onChange,
   name,
   setToggle,
+  render,
 }) => {
   return (
     <p>
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        name={name}
-      />
+      {render ? (
+        <textarea
+          name={name}
+          rows="4"
+          value={value}
+          cols="50"
+          setToggle={() => {
+            changeToTextArea();
+          }}
+        ></textarea>
+      ) : (
+        <input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          name={name}
+        />
+      )}
       {name === "password" && (
         <button type="button" onClick={setToggle}>
           <i

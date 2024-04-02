@@ -35,7 +35,7 @@ export const Login = () => {
 
   function showValues(event) {
     event.preventDefault();
-    alert(`Username:${username}\nPassword:${password}`);
+    alert(`Username: ${username}\nPassword: ${password}`);
   }
 
   const changeToTextArea = () => {
@@ -83,31 +83,20 @@ export const Login = () => {
       </form>
       <button onClick={showValues}>Show values</button>
 
-      {textArea ? (
-        <textarea
-          rows="4"
-          cols="50"
-          name="comment"
-          setToggle={() => {
-            changeToTextArea();
-          }}
-        >
-          {comment}
-        </textarea>
-      ) : (
-        <Input
-          type="text"
-          placeholder={"What's on your mind?"}
-          value={comment}
-          onChange={(e) => {
-            setComment(e.target.value);
-          }}
-          name="comment"
-          setToggle={() => {
-            changeToTextArea();
-          }}
-        />
-      )}
+      <Input
+        type="text"
+        placeholder={"What's on your mind?"}
+        value={comment}
+        onChange={(e) => {
+          setComment(e.target.value);
+        }}
+        name={"comment"}
+        render={textArea}
+        changerRender={setTextArea}
+        setToggle={() => {
+          changeToTextArea();
+        }}
+      />
       <button onClick={showComment}>Post Comment</button>
     </div>
   );
