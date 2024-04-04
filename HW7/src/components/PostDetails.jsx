@@ -55,7 +55,6 @@ export const PostDetails = () => {
               setDetails;
             }}
           />
-          br
         </form>
       )}
 
