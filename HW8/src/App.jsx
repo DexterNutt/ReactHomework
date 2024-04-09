@@ -19,31 +19,13 @@ export function App() {
       .catch((err) => alert(err));
   }, []);
 
-  // const openPhoto = (url) => {
-  //   setSelectedPhoto(url);
-  // };
-
-  // const closePhoto = () => {
-  //   setSelectedPhoto("");
-  // };
-
   return (
     <div id="App">
       <Nav />
       <GalleryContext.Provider value={{ selectedPhoto, setSelectedPhoto }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/gallery"
-            element={
-              <Gallery
-                listOfPhotos={photos}
-                // selectedPhoto={selectedPhoto}
-                // setPhoto={openPhoto}
-                // closePhoto={closePhoto}
-              />
-            }
-          />
+          <Route path="/gallery" element={<Gallery listOfPhotos={photos} />} />
         </Routes>
       </GalleryContext.Provider>
     </div>
