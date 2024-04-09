@@ -26,7 +26,6 @@ export const Posts = () => {
     setPosts([...posts.filter((post) => post.id !== postId)]);
   };
 
-  //* New Post
   const addPost = async (newPost) => {
     try {
       const response = await axios.post(
@@ -41,13 +40,6 @@ export const Posts = () => {
     }
     setAddingNewPost(!addingNewPost);
   };
-
-  //! Post Details
-  //! New btn edit post (Edit title / Edit Body)
-  //* use HTTP (PUT) in axios . put / patch
-  //? use .then or the (res) to output an alert (200) redirect to All posts / or alert the error
-
-  //! Add LOADING while executing the funcs
 
   return (
     <div id="posts">

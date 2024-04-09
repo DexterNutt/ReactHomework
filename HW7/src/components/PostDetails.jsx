@@ -1,10 +1,11 @@
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Comments } from "./Comments";
 
 export const PostDetails = () => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState({});
+  const [detailsEdit, setDetailsEdit] = useState({});
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(true);
   const [editingPost, setEditingPost] = useState(false);
@@ -24,40 +25,67 @@ export const PostDetails = () => {
       .catch((err) => alert(err.message));
   };
 
+  const editPost = () => {
+    setEditingPost(true);
+    setDetailsEdit(details);
+  };
+
+  const savePost = async () => {
+    const editedItem = await axios
+      .patch("https://jsonplaceholder.typicode.com/posts/" + postId, {
+        title: detailsEdit.title,
+        body: detailsEdit.body,
+      })
+      .catch((err) => alert(err.message));
+    setEditingPost(false);
+    setDetails(editedItem.data);
+    setDetailsEdit({});
+    alert(editedItem.status);
+  };
+
   return (
     <div id="post-details">
-      <h2>{details.title}</h2>
-      <p>{details.body}</p>
-
       {editingPost ? (
-        <button
-          onClick={() => {
-            setEditingPost(!editingPost);
-          }}
-        >
-          Edit Post
-        </button>
+        <>
+          <input
+            type={detailsEdit.title}
+            value={detailsEdit.title}
+            onChange={(e) => {
+              setDetailsEdit({ ...detailsEdit, title: e.target.value });
+            }}
+          />
+          <br />
+          <br />
+          <textarea
+            rows={10}
+            cols={20}
+            value={detailsEdit.body}
+            onChange={(e) => {
+              setDetailsEdit({ ...detailsEdit, body: e.target.value });
+            }}
+          />
+          <br />
+          <br />
+          <button onClick={savePost}>Save</button>
+          <br />
+          <br />
+          <button
+            onClick={() => {
+              setEditingPost(false);
+            }}
+          >
+            Cancel
+          </button>
+        </>
       ) : (
-        <form onSubmit="{funcToHandleThePatch OR PUT}">
-          <input
-            type="text"
-            id="edit-title"
-            placeholder={details.title}
-            onChange={() => {
-              setDetails;
-            }}
-          />
-          <input
-            type="text"
-            id="edit-body"
-            placeholder={details.body}
-            onChange={() => {
-              setDetails;
-            }}
-          />
-        </form>
+        <>
+          <h2>{details.title}</h2>
+          <p>{details.body}</p>
+          <button onClick={editPost}>Edit</button>
+        </>
       )}
-
+      <br />
+      <br />
       <Comments
         loadComments={loadComments}
         comments={comments}
