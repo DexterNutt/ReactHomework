@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import { Gallery } from "./components/Gallery";
+import { Home } from "./components/Home";
+import { Nav } from "./components/Nav";
+import { API_URL } from "./utils/constants";
+import "./css/App.css";
+import { GalleryContext } from "./utils/GalleryContext";
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+  const [photos, setPhotos] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/photos`)
+      .then((res) => setPhotos(res.data))
+      .catch((err) => alert(err));
+  }, []);
+
+  // const openPhoto = (url) => {
+  //   setSelectedPhoto(url);
+  // };
+
+  // const closePhoto = () => {
+  //   setSelectedPhoto("");
+  // };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div id="App">
+      <Nav />
+      <GalleryContext.Provider value={{ selectedPhoto, setSelectedPhoto }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/gallery"
+            element={
+              <Gallery
+                listOfPhotos={photos}
+                // selectedPhoto={selectedPhoto}
+                // setPhoto={openPhoto}
+                // closePhoto={closePhoto}
+              />
+            }
+          />
+        </Routes>
+      </GalleryContext.Provider>
+    </div>
+  );
 }
-
-export default App
