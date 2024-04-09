@@ -1,21 +1,32 @@
 import React, { useContext } from "react";
-// import PropTypes from "prop-types";
+
 import { GalleryContext } from "../utils/GalleryContext";
 
 export const Popup = () => {
-  const { selectedPhoto, setSelectedPhoto } = useContext(GalleryContext);
+  const { selectedPhoto, setSelectedPhoto, deletePhoto } =
+    useContext(GalleryContext);
+
   return (
     <div id="popup">
       <button
         className="close-popup"
         onClick={() => {
-          setSelectedPhoto("");
+          setSelectedPhoto({ id: null, url: "" });
         }}
       >
         Close Photo
       </button>
+
+      <button
+        className="delete-photo"
+        onClick={() => {
+          deletePhoto(selectedPhoto.id);
+        }}
+      >
+        Delete Photo
+      </button>
       <div className="popup-container">
-        <img src={selectedPhoto} alt={"image"} />
+        <img src={selectedPhoto.url} alt={"image"} />
       </div>
     </div>
   );
