@@ -6,9 +6,6 @@ export const Nav = () => {
       <li>
         <Link to="/cake">Cake</Link>
       </li>
-      <li>
-        <Link to="/comments">Comments</Link>
-      </li>
     </ul>
   );
 };

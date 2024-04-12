@@ -11,15 +11,18 @@ export const Cake = () => {
     <div id="cake">
       <h2>Cakes: {cakes}</h2>
       {message !== undefined && <p>{message}</p>}
-      <button disabled={cakes < 1} onClick={() => dispatch(buyCake(1))}>
-        Buy 1 Cake
+
+      <button
+        disabled={cakes < 1}
+        onClick={() => {
+          const askForNumOfCakes = prompt("How many cakes?");
+          dispatch(buyCake(Number(askForNumOfCakes)));
+        }}
+      >
+        Buy Cakes
       </button>
-      <button disabled={cakes < 2} onClick={() => dispatch(buyCake(2))}>
-        Buy 2 Cakes
-      </button>
-      <button disabled={cakes < 3} onClick={() => dispatch(buyCake(3))}>
-        Buy 3 Cakes
-      </button>
+      <br />
+      <br />
       <button onClick={() => dispatch(restockCakes())}>Restock Cakes</button>
     </div>
   );
