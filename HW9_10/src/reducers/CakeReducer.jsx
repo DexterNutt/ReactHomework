@@ -7,7 +7,13 @@ const initialState = {
 const CakeReducer = (state = initialState, action) => {
   switch (action.type) {
     case BUY_CAKE:
-      if (state.cakes - action.payload < 0) {
+      const numOfCakesToBuy = Number(action.payload);
+      if (isNaN(numOfCakesToBuy)) {
+        return {
+          ...state,
+          message: `Please enter a valid NUMBER of cakes!`,
+        };
+      } else if (state.cakes - numOfCakesToBuy < 0) {
         return {
           ...state,
           message: `Not Enough Cakes! Only ${state.cakes} left!`,
@@ -19,11 +25,21 @@ const CakeReducer = (state = initialState, action) => {
           message: undefined,
         };
       }
+
     case RESTOCK_CAKES:
-      return {
-        ...state,
-        cakes: state.cakes + action.payload,
-      };
+      const numOfCakesToOrder = Number(action.payload);
+      if (isNaN(numOfCakesToOrder)) {
+        return {
+          ...state,
+          message: `Please enter a valid NUMBER of cakes!`,
+        };
+      } else {
+        return {
+          ...state,
+          cakes: state.cakes + action.payload,
+          message: undefined,
+        };
+      }
     default:
       return state;
   }

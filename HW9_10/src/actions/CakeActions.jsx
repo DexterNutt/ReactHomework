@@ -7,9 +7,9 @@ export const buyCake = (numberOfCakes) => {
   };
 };
 
-export const restockCakes = () => {
+export const restockCakes = (numberOfCakes) => {
   return {
     type: RESTOCK_CAKES,
-    payload: 10,
+    payload: numberOfCakes,
   };
 };
